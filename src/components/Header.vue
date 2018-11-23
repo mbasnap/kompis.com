@@ -22,7 +22,7 @@ export default {
 <style>
 #header {
     height: 86px;
-    background: url(../assets/header-bg.png) repeat-x;
+    background: url(/static/img/header-bg.png) repeat-x;
 }
 #header, #footer, .mission, .breadcrumb, .node {
     clear: both;
@@ -30,7 +30,7 @@ export default {
 #header-wrapper {
     width: 980px;
     margin: 0 auto;
-    background: url(../assets/logo.png);
+    background: url(/static/img/logo.png);
     background-repeat: no-repeat;
     height: 80px;
     position: relative;
@@ -40,7 +40,7 @@ export default {
     margin: 0;
     padding: 0;
     float: right;
-    background: url(../assets/menu_top_bg_line.png) no-repeat;
+    background: url(/static/img/menu_top_bg_line.png) no-repeat;
     background-position: 2px 100%;
     position: absolute;
     bottom: -6px;

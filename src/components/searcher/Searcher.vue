@@ -8,8 +8,10 @@
         <div class="form-item form-type-textfield form-item-search">
 <input onblur="if (this.value == '') {this.value = 'Найти:';}" onfocus="if (this.value == 'Найти:') {this.value = '';}" type="text" id="edit-search" name="search" value="Найти:" size="25" maxlength="128" class="form-text required">
 </div>
-<input alt="Найти:" type="image" id="edit-submit" name="submit" src="@/assets/logo.png" class="form-submit">
-</div><input type="hidden" name="form_build_id" value="form-ecexChl-VjVuFgrhJxZGDqGRBqqdepKSvEUdYS6URjU">
+<input alt="Найти:" type="image" id="edit-submit" name="submit" 
+        src="/static/img/searcher.png" class="form-submit">
+</div>
+<input type="hidden" name="form_build_id" value="form-ecexChl-VjVuFgrhJxZGDqGRBqqdepKSvEUdYS6URjU">
 <input type="hidden" name="form_id" value="simplesearch_block_form">
 </div></form>	</div>
 </div>
@@ -34,7 +36,7 @@ export default {
     float: left;
     margin: 0;
     padding: 0;
-    background: url(./search-area.png) no-repeat scroll 0 0 rgba(0,0,0,0);
+    background: url(/static/img/search-area.png) no-repeat scroll 0 0 rgba(0,0,0,0);
 }
 .block-simplesearch {
     z-index: 100;

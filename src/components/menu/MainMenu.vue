@@ -41,7 +41,7 @@ ul.menu {
     float: left;
 }
 #block-system-main-menu div.content ul.menu li.first a {
-    background: url(./domik.png);
+    background: url(/static/img/domik.png);
     background-repeat: no-repeat;
     width: 26px;
     font-size: 0;
