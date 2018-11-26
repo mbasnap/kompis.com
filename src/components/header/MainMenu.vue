@@ -55,7 +55,7 @@ ul.menu {
     float: left;
 }
 #block-system-main-menu div.content ul.menu li a:hover {
-    background: url(/static/img/menu-bg-hover.png);
+    background: url(/static/img/kompis-menu-bg-hover.png);
     color: #fff;
 }
 #block-system-main-menu div.content ul.menu li.first a {

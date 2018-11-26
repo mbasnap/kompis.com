@@ -4,7 +4,7 @@
 <div class="content">
 <p>
     <a href="/">
-        <img alt="Главная" src="/static/img/logo.png">
+        <img alt="Главная" src="/static/img/kompis-logo-4.png">
     </a>
 </p>
 

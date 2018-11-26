@@ -29,18 +29,18 @@ export default {
     src: url(/static/fonts/carolina.ttf);
 }
 .node-type-page #sidebar-first {
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 #slogan {
     border-bottom: 1px solid #d3d3d3;
-    color: #333;
+    color: #6f6f6f;
         font-family: 'Carolina', arial;
         font-size: 36px;
         /* text-shadow: 4px 4px 4px #aaa; */
     font-weight: bold;
     margin-bottom: 10px;
     padding-top: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 20px;
     text-decoration: none;
 }
 #sidebar-first {
@@ -68,7 +68,7 @@ div.region-sidebar-first {
 }
 #block-menu-menu-all-from-one .content li, #block-block-17 .content li {
     list-style: none;
-    background: url(/static/img/vse_ruki_normal.png) no-repeat;
+    background: url(/static/img/left-menu-bg.png) no-repeat;
     display: block;
     width: 244px;
     height: 64px;
@@ -78,7 +78,7 @@ div.region-sidebar-first {
 #block-menu-menu-all-from-one .content li a.parts-graders, #block-block-17 .content li a.parts-graders {
     display: table-cell;
     font-size: 10.5pt;
-    color: #333;
+    color: #c1c0c0;
     font-weight: bold;
     text-transform: uppercase;
     width: 164px;
@@ -94,7 +94,7 @@ div.region-sidebar-first {
 #block-menu-menu-all-from-one .content li a.sell-graders, #block-block-17 .content li a.sell-graders {
     display: table-cell;
     font-size: 10.5pt;
-    color: #333;
+    color: #c1c0c0;
     font-weight: bold;
     text-transform: uppercase;
     width: 164px;
@@ -110,7 +110,7 @@ div.region-sidebar-first {
 #block-menu-menu-all-from-one .content li a.repair-graders, #block-block-17 .content li a.repair-graders {
     display: table-cell;
     font-size: 10.5pt;
-    color: #333;
+    color: #c1c0c0;
     font-weight: bold;
     text-transform: uppercase;
     width: 164px;
@@ -126,7 +126,7 @@ div.region-sidebar-first {
 #block-menu-menu-all-from-one .content li a.service-graders, #block-block-17 .content li a.service-graders {
     display: table-cell;
     font-size: 10.5pt;
-    color: #333;
+    color: #c1c0c0;
     font-weight: bold;
     text-transform: uppercase;
     width: 164px;

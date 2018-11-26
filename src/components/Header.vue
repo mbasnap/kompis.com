@@ -3,7 +3,7 @@
     <div id="header-wrapper">
         <logo></logo>
         <main-menu></main-menu>
-        <searcher></searcher>
+        <!-- <searcher></searcher> -->
         <telephone></telephone>
     </div>
 </div>
@@ -24,7 +24,7 @@ export default {
 <style>
 #header {
     height: 86px;
-    background: url(/static/img/header-bg.png) repeat-x;
+    background: url(/static/img/kompis-header-bg.png) repeat-x;
 }
 #header, #footer, .mission, .breadcrumb, .node {
     clear: both;
@@ -32,7 +32,6 @@ export default {
 #header-wrapper {
     width: 980px;
     margin: 0 auto;
-    background: url(/static/img/logo.png);
     background-repeat: no-repeat;
     height: 80px;
     position: relative;
@@ -41,12 +40,12 @@ export default {
     background-position: bottom;
     margin: 0;
     padding: 0;
-    float: right;
+    /* float: right; */
     background: url(/static/img/menu_top_bg_line.png) no-repeat;
     background-position: 2px 100%;
     position: absolute;
     bottom: -6px;
-    right: 0;
+    left: 220px;
 }
 
 .header-phone-block-link {

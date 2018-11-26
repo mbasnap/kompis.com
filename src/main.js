@@ -3,9 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './assets/style.css'
-import Vue2Crumbs from 'vue-2-crumbs'
-Vue.use(Vue2Crumbs)
+// import './assets/style.css'
+
 
 Vue.config.productionTip = false
 

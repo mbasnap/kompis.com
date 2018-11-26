@@ -18,9 +18,10 @@ export default {
 
 <style>
 #block-block-11 {
-    float: right;
+    float: left;
     width: 300px;
     height: 48px;
+    left: 250px;
 }
 .header-phone-block-main {
     font-family: 'ErasBoldITCRegular';
@@ -31,7 +32,7 @@ export default {
 }
 .header-phone-block-main .header-phone-block-code {
     font-size: 13.5pt;
-    color: #ffcf01;
+    color: #cac9c8;
     font-family: 'ErasBoldITCRegular';
 }
 .header-phone-block-main .header-phone-block-number {
