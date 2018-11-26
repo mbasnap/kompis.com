@@ -4,6 +4,7 @@
         <logo></logo>
         <main-menu></main-menu>
         <searcher></searcher>
+        <telephone></telephone>
     </div>
 </div>
 
@@ -11,10 +12,11 @@
 
 <script>
 import Logo from './header/Logo'
-import MainMenu from './menu/MainMenu'
-import Searcher from './searcher/Searcher'
+import MainMenu from './header/MainMenu'
+import Searcher from './header/Searcher'
+import Telephone from './header/Telephone'
 export default {
-    components: {Logo, MainMenu, Searcher}
+    components: {Logo, MainMenu, Searcher, Telephone}
 
 }
 </script>
@@ -45,5 +47,13 @@ export default {
     position: absolute;
     bottom: -6px;
     right: 0;
+}
+
+.header-phone-block-link {
+    float: right;
+    margin-right: 25px;
+}
+.header-phone-block-link a {
+    color: #FFF;
 }
 </style>
