@@ -9,12 +9,8 @@
             </div>
             <left-side-bar></left-side-bar>
         </div>
-        <div id="footer">
             <mba-footer></mba-footer>
-        <div  id="footer-copyright">
-            <footer-copyright></footer-copyright>
-        </div>
-        </div>
+            <!-- <footer-copyright></footer-copyright> -->
     </div>
   </div>
 </template>
@@ -88,9 +84,7 @@ tr.even td, tr.odd td {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-div.block {
-    position: relative;
-}
+
 h1.title {
     color: #333;
     font-size: 14pt;

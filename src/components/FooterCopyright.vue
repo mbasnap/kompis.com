@@ -1,12 +1,12 @@
 <template>
-<div id="footer-copyright-wrapper">
-<p>® 2012-2016 Группа компаний ТДС. Все права защищены | Продажа, обслуживание и ремонт спецтехники.
+<div class="footer-copyright-wrapper">
+<em>® 2012-2018 ООО"Компис" | Обслуживание и ремонт спецтехники.
      Продажа запасных частей.
-</p>
-<div class="imcopy">Разработано в <span>Industrial Media</span> <a>
-    <img
-     src="/static/img/im_ico.png" alt="">
-</a>
+</em>
+<div class="imcopy">
+    <a>
+        <img src="/static/img/im_ico.png" alt="">
+    </a>
 </div>
 </div>
 </template>
@@ -18,23 +18,22 @@ export default {
 </script>
 
 <style>
-#footer-copyright {
+
+.footer-copyright-wrapper {
     height: 28px;
     background: url(/static/img/footer-bg-2a.png) repeat-x;
-}
-#footer-copyright-wrapper {
-    width: 980px;
+    /* width: 980px; */
     margin: 0 auto;
     padding: 5px 0 0 0;
     font-size: 8.25pt;
-    color: #333;
+    color:  rgb(10, 10, 10);
 }
-#footer-copyright-wrapper p {
-    margin: 0;
+.footer-copyright-wrapper em {
+    padding-left: 10px;
     float: left;
 }
 .imcopy {
-    color: #a28101;
+    color:rgb(10, 10, 10);
     font-size: 10px;
     float: right;
     position: relative;
@@ -43,7 +42,7 @@ export default {
     right: 20px;
 }
 .imcopy span {
-    color: #333;
+    color: rgb(10, 10, 10);
 }
 .imcopy img {
     position: absolute;

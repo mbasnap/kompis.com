@@ -45,7 +45,7 @@ export default {
     background-position: 2px 100%;
     position: absolute;
     bottom: -6px;
-    left: 220px;
+    left: 265px;
 }
 
 .header-phone-block-link {

@@ -1,15 +1,13 @@
 <template>
-<div id="block-block-12" class="block block-block block-odd first clearfix">
-<div class="block-inner">
-<div class="content">
+<div class="logo block  clearfix">
+
 <p>
     <a href="/">
         <img alt="Главная" src="/static/img/kompis-logo-4.png">
     </a>
 </p>
 
-</div>
-</div>
+
 </div>
 </template>
 
@@ -20,9 +18,10 @@ export default {
 </script>
 
 <style>
-#block-block-12 {
+.logo {
     width: 162px;
     height: 80px;
     float: left;
+    left: 43px;
 }
 </style>

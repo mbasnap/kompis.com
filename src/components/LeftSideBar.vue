@@ -54,9 +54,7 @@ export default {
 div.region-sidebar-first {
     padding-right: 20px;
 }
-.region {
-    padding-bottom: 3px;
-}
+
 #block-menu-menu-all-from-one, #block-block-17 {
     padding-left: 5px;
     margin-bottom: 15px;
