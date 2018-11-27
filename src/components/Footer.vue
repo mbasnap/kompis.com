@@ -13,7 +13,7 @@
     <p><strong>{{getPhone(1)}}</strong></p>
     </div>
 </div> 
-<div v-show="" class="block fax ">
+<div v-show="!!fax" class="block fax ">
     <div>
         <p><em>Факс:</em> <strong>+38 (04594) 7-21-37</strong></p>
     </div>
