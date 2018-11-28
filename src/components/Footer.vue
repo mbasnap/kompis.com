@@ -28,7 +28,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-const { mapState} = createNamespacedHelpers('settings');
+const { mapState} = createNamespacedHelpers('company');
 export default {
     computed: {
 

@@ -8,17 +8,13 @@
         <span class="header-mail-block-code"><em>E-mail:</em> </span>
         <span class="header-mail-block-number"><strong>{{mail}}</strong></span>
     </div>
-    <!-- <div class="header-phone-block-link">
-        <a rel="nofollow" class="colorbox-node init-colorbox-node-processed-processed" 
-        href="/webform/obratnyy-zvonok?width=410&amp;height=220">Заказать обратный звонок
-        </a>
-    </div> -->
+
 </div>
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-const { mapState} = createNamespacedHelpers('settings');
+const { mapState} = createNamespacedHelpers('company');
 export default {
     computed: {
     ...mapState( {

@@ -1,4 +1,6 @@
 import Home from './Home'
-import Service from './Service'
+import Mending from './Mending'
+import Restoration from './Restoration'
+import Spares from './Spares'
 import Contacts from './Contacts'
-export {Home, Service, Contacts}
+export {Home, Mending, Restoration, Spares, Contacts}

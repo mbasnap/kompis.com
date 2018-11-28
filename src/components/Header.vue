@@ -36,17 +36,7 @@ export default {
     height: 80px;
     position: relative;
 }
-#block-system-main-menu {
-    background-position: bottom;
-    margin: 0;
-    padding: 0;
-    /* float: right; */
-    background: url(/static/img/menu_top_bg_line.png) no-repeat;
-    background-position: 2px 100%;
-    position: absolute;
-    bottom: -6px;
-    left: 265px;
-}
+
 
 .header-phone-block-link {
     float: right;

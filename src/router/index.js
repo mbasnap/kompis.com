@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {Home, Service, Contacts} from '@/components/pages'
+import {Home, Mending, Restoration, Spares, Contacts} from '@/components/pages'
 
 Vue.use(Router, Home)
 
@@ -13,18 +13,40 @@ export default new Router({
       component: Home,
       meta: {
         breadcrumb: [
-          // {name: 'Home', link: '/'}
+           {name: 'Главная'}
         ]
       }
     },
     {
-      path: '/service',
-      name: 'service',
-      component: Service,
+      path: '/mending',
+      name: 'mending',
+      component: Mending,
       meta: {
         breadcrumb: [
-          {name: 'Home', link: "/"},
-          {name: 'Service'},
+          {name: 'Главная', link: "/"},
+          {name: 'Ремонт спецтехники'},
+        ]
+      }
+    },
+    {
+      path: '/restoration',
+      name: 'restoration',
+      component: Restoration,
+      meta: {
+        breadcrumb: [
+          {name: 'Главная', link: "/"},
+          {name: 'Восстановление отверстий'},
+        ]
+      }
+    },
+    {
+      path: '/spares',
+      name: 'spares',
+      component: Spares,
+      meta: {
+        breadcrumb: [
+          {name: 'Главная', link: "/"},
+          {name: 'Запчасти'},
         ]
       }
     },
@@ -34,9 +56,8 @@ export default new Router({
       component: Contacts,
       meta: {
         breadcrumb: [
-          {name: 'Home', link: "/"},
-          {name: 'Service', link: "service"},
-          {name: 'Contacts'},
+          {name: 'Главная', link: "/"},
+          {name: 'Контакты'},
         ]
       }
     }
