@@ -1,23 +1,28 @@
 
-
+import axios from 'axios'
 const state = {
     header: "Обслуживание",
-    img: {
-        src: '/static/img/tdc_logo.jpg',
-        alt: ''
-    },
-    content: 'В мире нет ничего вечного и это всем известно.' +
-    'Вечный двигатель еще не изобретен, но давно уже известны секреты,' +
-    'как можно продлить ресурс и длительность работы узлов и агрегатов любой техники.' +
-    'Ответ очень прост: нужно своевременно проводить техническое обслуживание техники. "&nbsp"' + 
-    'как можно продлить ресурс и длительность работы узлов и агрегатов любой техники.' 
-    
-    ,
-    after: ''
+    content: '' 
 }
 const getters = {}
-const mutations = {}
-const actions = {}
+const mutations = {
+    content: (state, v) => state.content = v
+}
+const actions = {
+    update({commit}) {
+        console.log('updated')
+        axios.post('http://127.0.0.2:8648', JSON.stringify({
+            name: 'Sergey'
+        }))
+          .then(function (response) {
+              console.log(response)
+            commit('content', response.data)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+}
 
 export default {
 namespaced: true,
