@@ -5,7 +5,9 @@
         <bread-crumb></bread-crumb>
         <div id="content-wrapper" class="clearfix">
             <div id="content">
-                <router-view />
+                <!-- <router-view class="center"/> -->
+                <router-view  class="center"/>
+                <!-- <div class="center" v-html="getContent" v-else></div> -->
             </div>
             <left-side-bar></left-side-bar>
         </div>

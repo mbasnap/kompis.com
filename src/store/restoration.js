@@ -1,7 +1,6 @@
 
-import axios from 'axios'
+import db from '@/db'
 const state = {
-    header: "Обслуживание",
     content: '' 
 }
 const getters = {}
@@ -10,17 +9,11 @@ const mutations = {
 }
 const actions = {
     update({commit}) {
-        console.log('updated')
-        axios.post('http://127.0.0.2:8648', JSON.stringify({
-            name: 'Sergey'
-        }))
-          .then(function (response) {
-              console.log(response)
-            commit('content', response.data)
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        db('select', {from: 'users', where: {id: 5}}).then(response => {
+            console.log(response);
+            commit('content', response.data.city)
+        })
+        .catch(error => console.log(error))
     }
 }
 
