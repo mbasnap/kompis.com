@@ -1,19 +1,20 @@
 <template>
-    <div  v-html="getContent"></div>
+    <div  v-html="post.content"></div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
 export default {
+
     computed: {
-        ...mapState(['content']),
-        getContent(){
-            return this.content[this.$route.name] || this.update()
+        ...mapState(['posts']),
+        post() {
+            return this.posts.find(this.byName) || {}
         }
     },
     methods: {
-        update() {
-            this.$store.dispatch('updateContent', this.$route.name)
+        byName(item) {
+            return item.name === this.$route.name
         }
     }
 }

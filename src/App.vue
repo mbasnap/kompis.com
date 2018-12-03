@@ -26,7 +26,10 @@ import MbaFooter from './components/Footer'
 import FooterCopyright from './components/FooterCopyright'
 export default {
   name: 'App',
-  components: {MbaHeader, LeftSideBar, MbaFooter, FooterCopyright, BreadCrumb}
+  components: {MbaHeader, LeftSideBar, MbaFooter, FooterCopyright, BreadCrumb},
+  created(){
+    this.$store.dispatch('init')
+  }
 }
 </script>
 

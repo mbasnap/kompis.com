@@ -2,26 +2,32 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import company from './company'
 import ui from './ui'
-import restoration from './restoration'
 import db from '@/db'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({ 
-    modules: {company, ui, restoration},
+    modules: {company, ui},
     state: {
         content: {
             test: 'test'
-        }
+        },
+        posts: []
     },
     mutations: {
-        content: (state, v) => state.content = v
+        content: (state, v) => state.content = v,
+        posts: (state, v) => state.posts = v
     },
     getters: {},
     actions: {
-        updateContent({ state, commit }, name){
-            db.getContent(name)
-            .then(content => commit('content', {...state.content, ...content}))
+
+        init({dispatch}) {
+            dispatch('ui/init')
+        },
+        initPosts({commit}) {
+            db.query('getAllPosts').then(res => {
+                  if(res.length) commit('posts', res.map(JSON.parse))
+            })
         }
     }
  })

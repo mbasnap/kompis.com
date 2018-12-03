@@ -1,16 +1,17 @@
 
-
+import query from '@/db'
 const state = {
-    mainMenu: [
-        {name: 'Ремонт спецтехники', path: '/mending'},
-        {name: 'Восстановление отверстий', path: '/restoration'},
-        {name: 'Запчасти', path: '/spares'},
-        {name: 'Контакты', path: '/contacts'},
-    ]
+    mainMenu: []
 }
 const getters = {}
-const mutations = {}
-const actions = {}
+const mutations = {
+    mainMenu: (state, v) => state.mainMenu = v
+}
+const actions = {
+    init: ({commit}) => {
+        query('getMenu').then(res =>commit('mainMenu', res)) 
+    }  
+}
 
 export default {
 namespaced: true,
