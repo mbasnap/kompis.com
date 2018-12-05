@@ -2,24 +2,24 @@
 <div class="footer clearfix">
     <div class="block adress ">
         <div>
-            <p><em>Адрес:</em> <strong>{{adress.country}} , {{adress.provance}} обл., </strong></p>
-            <p><strong>г. {{adress.sity}}, ул. {{adress.srteet}}, {{adress.house}}</strong></p>	
+            <!-- <p><em>Адрес:</em> <strong>{{company.country}} , {{company.provance}} обл., </strong></p> -->
+            <!-- <p><strong>г. {{company.sity}}, ул. {{company.srteet}}, {{company.house}}</strong></p>	 -->
         </div>
     </div> 
 <!-- /block-inner /block -->
 <div  class="block phones ">
     <div>
-    <p><em>Тел.:</em><strong>{{getPhone(0)}}</strong></p>
-    <p><strong>{{getPhone(1)}}</strong></p>
+    <!-- <p><em>Тел.:</em><strong>{{company.phones[0]}}</strong></p> -->
+    <!-- <p><strong>{{company.phones[1]}}</strong></p> -->
     </div>
 </div> 
-<div v-show="!!fax" class="block fax ">
+<div class="block fax ">
     <div>
-        <p><em>Факс:</em> <strong>+38 (04594) 7-21-37</strong></p>
+        <!-- <p><em>Факс:</em> <strong>{{company.fax}}</strong></p> -->
     </div>
 </div>
 <div class="block mail ">
-<div > <em>E-mail:</em> <strong>{{mails[0]}}</strong> </div>
+<!-- <div > <em>E-mail:</em> <strong>{{company.mail}}</strong> </div> -->
 </div>
 
 </div>
@@ -27,18 +27,10 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-const { mapState} = createNamespacedHelpers('company');
+import { mapState, mapGetters } from 'vuex'
 export default {
     computed: {
-
-    ...mapState(['phones', 'mails', 'adress', 'fax'])
-    },
-    methods: {
-        getPhone(index){
-            let phone = this.phones[index]
-            return phone.kod + ' ' + phone.number
-        }
+        ...mapGetters('ui', ['company'])
     }
 }
 </script>

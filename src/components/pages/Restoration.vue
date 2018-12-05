@@ -7,14 +7,10 @@ import {mapState} from 'vuex'
 export default {
 
     computed: {
-        ...mapState(['posts']),
+        ...mapState('ui', ['posts']),
         post() {
-            return this.posts.find(this.byName) || {}
-        }
-    },
-    methods: {
-        byName(item) {
-            return item.name === this.$route.name
+            let byName = ({name}) => name === 'restoration'
+               return this.posts.find(byName) || {}
         }
     }
 }

@@ -28,7 +28,7 @@ export default {
   name: 'App',
   components: {MbaHeader, LeftSideBar, MbaFooter, FooterCopyright, BreadCrumb},
   created(){
-    this.$store.dispatch('init')
+    this.$store.dispatch('ui/init')
   }
 }
 </script>

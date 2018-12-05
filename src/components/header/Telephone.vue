@@ -1,26 +1,22 @@
 <template>
 <div class="header-phone block  clearfix">
     <div class="header-phone-block">
-        <span class="header-phone-block-code">{{phone.kod}}</span>
-        <span class="header-phone-block-number">{{phone.number}}</span>
+        <!-- <span class="header-phone-block-code">{{company.phones[0].kod}}</span> -->
+        <!-- <span class="header-phone-block-number">{{company.phones[0].number}}</span> -->
     </div>
     <div class="header-mail-block">
         <span class="header-mail-block-code"><em>E-mail:</em> </span>
-        <span class="header-mail-block-number"><strong>{{mail}}</strong></span>
+        <!-- <span class="header-mail-block-number"><strong>{{company.mails[0]}}</strong></span> -->
     </div>
 
 </div>
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-const { mapState} = createNamespacedHelpers('company');
+import { mapGetters } from 'vuex';
 export default {
     computed: {
-    ...mapState( {
-      phone: state => state.phones[0],
-      mail: state => state.mails[0]
-    })
+        ...mapGetters('ui', ['company'])
     },
     methods: {
 
