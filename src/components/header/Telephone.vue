@@ -6,7 +6,7 @@
     </div>
     <div class="header-mail-block">
         <span class="header-mail-block-code"><em>E-mail:</em> </span>
-        <span class="header-mail-block-number"><strong>{{company.mail}}</strong></span>
+        <span class="header-mail-block-number"><strong>{{companyMail.mail}}</strong></span>
     </div>
 
 </div>
@@ -19,6 +19,9 @@ export default {
         ...mapState('ui', ['company']),
         companyPhone() {
             return this.company.phone || {}
+        },
+        companyMail() {
+            return this.company.mail || {}
         }
     },
     methods: {
