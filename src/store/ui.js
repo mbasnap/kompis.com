@@ -25,11 +25,9 @@ const mutations = {
 }
 const actions = {
     init: ({commit}) => {
-        db.get('mainMenu').then(res =>commit('mainMenu', res)) 
-        db.get('posts').then(res =>commit('posts', res))
-        db.get('users', {id: 1}).then(res =>commit('company', res[0])) 
-        // db.get('phones').then(res =>commit('phones', res))
-        // db.get('mails').then(res =>commit('mails', res))
+        // db.get('posts').then(res =>commit('posts', res))
+        // db.get('mainMenu').then(res =>commit('mainMenu', res)) 
+        db.get('company').then(res =>commit('company', res))
     }  
 }
 

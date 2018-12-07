@@ -1,22 +1,25 @@
 <template>
 <div class="header-phone block  clearfix">
     <div class="header-phone-block">
-        <!-- <span class="header-phone-block-code">{{company.phones[0].kod}}</span> -->
-        <!-- <span class="header-phone-block-number">{{company.phones[0].number}}</span> -->
+        <span class="header-phone-block-code">{{companyPhone.kod}}</span>
+        <span class="header-phone-block-number">{{companyPhone.number}}</span>
     </div>
     <div class="header-mail-block">
         <span class="header-mail-block-code"><em>E-mail:</em> </span>
-        <!-- <span class="header-mail-block-number"><strong>{{company.mails[0]}}</strong></span> -->
+        <span class="header-mail-block-number"><strong>{{company.mail}}</strong></span>
     </div>
 
 </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState} from 'vuex';
 export default {
     computed: {
-        ...mapGetters('ui', ['company'])
+        ...mapState('ui', ['company']),
+        companyPhone() {
+            return this.company.phone || {}
+        }
     },
     methods: {
 

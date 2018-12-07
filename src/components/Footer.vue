@@ -2,24 +2,24 @@
 <div class="footer clearfix">
     <div class="block adress ">
         <div>
-            <!-- <p><em>Адрес:</em> <strong>{{company.country}} , {{company.provance}} обл., </strong></p> -->
-            <!-- <p><strong>г. {{company.sity}}, ул. {{company.srteet}}, {{company.house}}</strong></p>	 -->
+            <p><em>Адрес:</em> <strong>{{company.country}} , {{company.provance}} обл., </strong></p>
+            <p><strong>г. {{company.sity}}, ул. {{company.srteet}}, {{company.house}}</strong></p>	
         </div>
     </div> 
 <!-- /block-inner /block -->
 <div  class="block phones ">
     <div>
-    <!-- <p><em>Тел.:</em><strong>{{company.phones[0]}}</strong></p> -->
+    <p><em>Тел.:</em><strong>{{company.phone}}</strong></p>
     <!-- <p><strong>{{company.phones[1]}}</strong></p> -->
     </div>
 </div> 
 <div class="block fax ">
     <div>
-        <!-- <p><em>Факс:</em> <strong>{{company.fax}}</strong></p> -->
+        <p><em>Факс:</em> <strong>{{company.fax}}</strong></p>
     </div>
 </div>
 <div class="block mail ">
-<!-- <div > <em>E-mail:</em> <strong>{{company.mail}}</strong> </div> -->
+<div > <em>E-mail:</em> <strong>{{company.mail}}</strong> </div>
 </div>
 
 </div>
@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 export default {
     computed: {
-        ...mapGetters('ui', ['company'])
+        ...mapState('ui', ['company'])
     }
 }
 </script>
