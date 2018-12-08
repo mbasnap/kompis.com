@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {Home, Mending, Restoration, Spares, Contacts} from '@/components/pages'
+import NamedPost from '@/components/NamedPost'
+import Contacts from '@/components/Contacts'
+import Home from '@/components/Home'
 
-Vue.use(Router, Home)
+Vue.use(Router)
 
 export default new Router({
   mode: 'history',
@@ -20,7 +22,7 @@ export default new Router({
     {
       path: '/mending',
       name: 'mending',
-      component: Mending,
+      component: NamedPost,
       meta: {
         breadcrumb: [
           {name: 'Главная', link: "/"},
@@ -31,7 +33,7 @@ export default new Router({
     {
       path: '/restoration',
       name: 'restoration',
-      component: Restoration,
+      component: NamedPost,
       meta: {
         breadcrumb: [
           {name: 'Главная', link: "/"},
@@ -42,7 +44,7 @@ export default new Router({
     {
       path: '/spares',
       name: 'spares',
-      component: Spares,
+      component: NamedPost,
       meta: {
         breadcrumb: [
           {name: 'Главная', link: "/"},

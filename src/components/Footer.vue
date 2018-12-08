@@ -2,24 +2,24 @@
 <div class="footer clearfix">
     <div class="block adress ">
         <div>
-            <p><em>Адрес:</em> <strong>{{companyAddress.country}} , {{companyAddress.provance}} обл., </strong></p>
-            <p><strong>г. {{companyAddress.sity}}, ул. {{companyAddress.srteet}}, {{companyAddress.house}}</strong></p>	
+            <p><em>Адрес:</em> <strong>{{address.country}} , {{address.province}} обл., </strong></p>
+            <p><strong>г. {{address.city}}, ул. {{address.street}}, {{address.home}}</strong></p>	
         </div>
     </div> 
 <!-- /block-inner /block -->
 <div  class="block phones ">
     <div>
-    <p><em>Тел.:</em><strong>{{companyPhones[0]}}</strong></p>
-    <p><strong>{{companyPhones[1]}}</strong></p>
+    <p><em>Тел.:</em><strong>{{phones[0]}}</strong></p>
+    <p><strong>{{phones[1]}}</strong></p>
     </div>
 </div> 
 <div class="block fax ">
     <div>
-        <p><em>Факс:</em> <strong>{{company.fax}}</strong></p>
+        <p><em>Факс:</em> <strong>{{fax}}</strong></p>
     </div>
 </div>
 <div class="block mail ">
-<div > <em>E-mail:</em> <strong>{{companyMailes[0]}}</strong> </div>
+<div > <em>E-mail:</em> <strong>{{mailes[0]}}</strong> </div>
 </div>
 
 </div>
@@ -31,14 +31,18 @@ import { mapState } from 'vuex'
 export default {
     computed: {
         ...mapState('ui', ['company']),
-        companyAddress(){
+        address(){
             return this.company.address || {}
         },
-        companyMailes(){
+        mailes(){
             let mailes = this.company.mailes || []
             return mailes.map(item => item.mail) 
         },
-        companyPhones(){
+        fax(){
+            let fax = this.company.fax || {}
+            return fax.kod + ' ' + fax.number
+        },
+        phones(){
             let phones = this.company.phones || []
             return phones.map(item => item.kod + ' ' + item.number) 
         }

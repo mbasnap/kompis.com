@@ -9,7 +9,8 @@ export default {
     computed: {
         ...mapState('ui', ['posts']),
         post() {
-            let byName = ({name}) => name === 'restoration'
+            let routeName = this.$route.name,
+            byName = ({name}) => name === routeName
                return this.posts.find(byName) || {}
         }
     }
