@@ -1,38 +1,22 @@
 <template>
-    <div class="">
-        <!-- <div class="block-inner"> -->
-            <!-- <div class="content"> -->
-                <div class="news-block-main">
-                <div class="view-header"><p><a href="news">Новости</a></p></div>
-                <!-- <div class="view-content"> -->
-
-                    <div v-for="(item, index) in lastNews" :key="index">
-                        <div class="views-field-date">
-                        <!-- <div class="field-content"> -->
-                        <span class="date-display-single" >{{item.date}}</span>
-                        <!-- </div>  -->
-                        </div>
-                        <div class="views-field-short-description">
-                        <!-- <div class="field-content"> -->
-                        <a :href="item.href">{{item.title}}</a>
-                        <!-- </div>  -->
-                        </div> 
-                    </div>
-                <!-- </div> -->
-                </div>
-            <!-- </div> -->
-        <!-- </div> -->
+    <div class="news-block-main">
+        <div class="view-header"><p><a href="news">Новости</a></p></div>
+        <div v-for="(item, index) in lastNews" :key="index">
+            <div class="views-field-date">
+            <span class="date-display-single" >{{item.date}}</span>
+            </div>
+            <div class="views-field-short-description">
+            <a :href="item.href">{{item.title}}</a>
+            </div> 
+        </div>
     </div>
 </template>
 
 <script>
-import {mapState} from 'Vuex'
+import {mapState} from 'vuex'
 export default {
 computed: {
     ...mapState('ui', ['lastNews']),
-    index() {
-        return 0
-    }
 },
 
 }
