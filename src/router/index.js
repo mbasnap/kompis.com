@@ -5,20 +5,32 @@ import Contacts from '@/components/Contacts'
 import Home from '@/components/Home'
 
 Vue.use(Router)
-
-export default new Router({
+let home = {
+  path: '/',
+  name: 'home',
+  component: Home,
+  meta: {
+    breadcrumb: [
+       {name: 'Главная'}
+    ]
+  }
+},
+edit = {path: 'edit', component: NamedPost },
+ restoration = {
+  path: '/restoration',
+  name: 'restoration',
+  component: NamedPost,
+  meta: {
+    breadcrumb: [
+      {name: 'Восстановление отверстий'},
+    ]
+  },
+  children: [edit]
+},
+myRouter = new Router({
   // mode: 'history',
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home,
-      meta: {
-        breadcrumb: [
-           {name: 'Главная'}
-        ]
-      }
-    },
+    home,
     {
       path: '/mending',
       name: 'mending',
@@ -30,17 +42,7 @@ export default new Router({
         ]
       }
     },
-    {
-      path: '/restoration',
-      name: 'restoration',
-      component: NamedPost,
-      meta: {
-        breadcrumb: [
-          {name: 'Главная', link: "/"},
-          {name: 'Восстановление отверстий'},
-        ]
-      }
-    },
+    restoration,
     {
       path: '/spares',
       name: 'spares',
@@ -66,3 +68,8 @@ export default new Router({
     
   ]
 })
+ myRouter.beforeEach((to, from, next) => {
+   console.log(to)
+   next()
+ })
+export default  myRouter

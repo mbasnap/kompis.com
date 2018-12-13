@@ -1,41 +1,41 @@
 <template>
     <div>
-        <quill-editor v-model="content"
+         <router-link :to="{ path: 'edit', query: { ids: 123 }}" append>edit</router-link>
+        <quill-editor v-model="post.content"
+                    @change="onEditorChange($event)"
                       :options="editorOption">
         </quill-editor>
-    <!-- <medium-editor
-      v-if='show'
-      :text='post.content'
-      :options='options'
-      v-on:edit='applyTextEdit'/> -->
-
     </div>
 </template>
 
 <script>
-  import VueQuillEditor, { Quill } from 'vue-quill-editor'
-  import { ImageDrop } from 'quill-image-drop-module'
-  import ImageResize from 'quill-image-resize-module'
-  Quill.register('modules/imageDrop', ImageDrop)
-  Quill.register('modules/imageResize', ImageResize)
-import editor from 'vue2-medium-editor'
-import {mapState} from 'vuex'
+    import 'quill/dist/quill.core.css'
+    import 'quill/dist/quill.snow.css'
+    import 'quill/dist/quill.bubble.css'
+    import { quillEditor, Quill } from 'vue-quill-editor'
+    import { ImageDrop } from 'quill-image-drop-module'
+    import ImageResize from 'quill-image-resize-module'
+    Quill.register('modules/imageDrop', ImageDrop)
+    Quill.register('modules/imageResize', ImageResize)
+    import {mapState} from 'vuex'
+
 export default {
-    components: {
-        'medium-editor': editor
-    },
+    components: {quillEditor},
     data() {
         return {
-            text: 'asaDSADAS',
-            content: 'dsadas',
-            show: true,
         editorOption: {
+        theme: 'bubble',
           modules: {
             toolbar: [
-              [{ 'size': ['small', false, 'large'] }],
-              ['bold', 'italic'],
+              ['bold', 'italic', 'underline'],
+              [{ 'size': ['small', false, 'large', 'huge'] }],
               [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-              ['link', 'image']
+              [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+              [{ 'font': [] }],
+              [{ 'color': [] }, { 'background': [] }],
+              [{ 'align': [] }],
+              ['clean'],
+              ['link', 'image', 'video']
             ],
             history: {
               delay: 1000,
@@ -52,40 +52,30 @@ export default {
               modules: [ 'Resize', 'DisplaySize', 'Toolbar' ]
             }
           }
-        },
-            options: {
-                // toolbar: false,
-                // disableEditing: true,
-                buttons: ['bold', 'italic', 'underline', 'anchor'],
-                anchor: {
-                    /* These are the default options for anchor form,
-                    if nothing is passed this is what it used */
-                    customClassOption: 'alink',
-                    customClassOptionText: 'Button',
-                    linkValidation: false,
-                    placeholderText: 'YOYOYO',
-                    targetCheckbox: false,
-                    targetCheckboxText: 'Open in new window'
-                }
-            }
+        }
+            // editorSettings: {
+            //     disabled: true,
+            //     modules: {
+            //         imageDrop: true,
+            //         imageResize: {}
+            //     }
+            // }
         }
     },
+ 
     computed: {
         ...mapState('ui', ['posts']),
         post() {
             let routeName = this.$route.name,
             byName = ({name}) => name === routeName
+            console.log(this.$route)
                return this.posts.find(byName) || {}
         }
     },
     methods: {
-    applyTextEdit (ev) {
-      console.log(ev)
-      if (ev.event.target) {
-        console.log(ev.event.target.innerHTML)
-        this.text = ev.event.target.innerHTML
-      }
-    }
+        onEditorChange(evt) {
+            // console.log(evt)
+        }
     }
 }
 </script>
