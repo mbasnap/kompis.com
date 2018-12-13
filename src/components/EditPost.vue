@@ -1,6 +1,6 @@
 <template>
     <div>
-         <router-link :to="{ path: 'edit', query: { ids: 123 }}" append>edit</router-link>
+         <a>save</a>    
         <quill-editor v-model="post.content"
                     @change="onEditorChange($event)"
                       :options="editorOption">
@@ -53,23 +53,16 @@ export default {
             }
           }
         }
-            // editorSettings: {
-            //     disabled: true,
-            //     modules: {
-            //         imageDrop: true,
-            //         imageResize: {}
-            //     }
-            // }
         }
     },
  
     computed: {
         ...mapState('ui', ['posts']),
         post() {
-            let routeName = this.$route.name,
-            byName = ({name}) => name === routeName
-            console.log(this.$route)
-               return this.posts.find(byName) || {}
+            let query = this.$route.query,
+            byId = ({id}) => id === query.post
+            console.log("dddd")
+               return this.posts.find(byId) || {}
         }
     },
     methods: {

@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import NamedPost from '@/components/NamedPost'
-import Contacts from '@/components/Contacts'
-import Home from '@/components/Home'
+import EditPost from '@/components/EditPost'
+import Contacts from '@/components/page/Contacts'
+import Home from '@/components/page/Home'
+import Restoration from '@/components/page/Restoration'
 
 Vue.use(Router)
 let home = {
@@ -15,17 +16,17 @@ let home = {
     ]
   }
 },
-edit = {path: 'edit', component: NamedPost },
+edit = {path: '*/edit', component: EditPost },
  restoration = {
   path: '/restoration',
   name: 'restoration',
-  component: NamedPost,
+  component: Restoration,
   meta: {
     breadcrumb: [
       {name: 'Восстановление отверстий'},
     ]
   },
-  children: [edit]
+  // children: [edit]
 },
 myRouter = new Router({
   // mode: 'history',
@@ -34,7 +35,7 @@ myRouter = new Router({
     {
       path: '/mending',
       name: 'mending',
-      component: NamedPost,
+      component: Restoration,
       meta: {
         breadcrumb: [
           {name: 'Главная', link: "/"},
@@ -42,11 +43,12 @@ myRouter = new Router({
         ]
       }
     },
+    edit,
     restoration,
     {
       path: '/spares',
       name: 'spares',
-      component: NamedPost,
+      component: Restoration,
       meta: {
         breadcrumb: [
           {name: 'Главная', link: "/"},
@@ -69,7 +71,6 @@ myRouter = new Router({
   ]
 })
  myRouter.beforeEach((to, from, next) => {
-   console.log(to)
    next()
  })
 export default  myRouter
