@@ -1,6 +1,6 @@
 <template>
     <div>
-         <a>save</a>    
+         <a class="save" @click="savePost">save</a>
         <quill-editor v-model="post.content"
                     @change="onEditorChange($event)"
                       :options="editorOption">
@@ -23,6 +23,7 @@ export default {
     components: {quillEditor},
     data() {
         return {
+        content: '',
         editorOption: {
         theme: 'bubble',
           modules: {
@@ -55,24 +56,36 @@ export default {
         }
         }
     },
- 
+
     computed: {
         ...mapState('ui', ['posts']),
-        post() {
-            let query = this.$route.query,
-            byId = ({id}) => id === query.post
-            console.log("dddd")
-               return this.posts.find(byId) || {}
+        post: {
+            get() {
+                let query = this.$route.query,
+                byId = ({id}) => id === query.post
+                return this.posts.find(byId) || {}
+            }
         }
     },
     methods: {
-        onEditorChange(evt) {
-            // console.log(evt)
+        savePost(evt) {
+            let post = this.post, content = this.content
+            this.$store.dispatch('ui/savePost', {...post, content})
+        },
+        onEditorChange({html}) {
+            console.log(html)
+            this.content = html
         }
     }
 }
 </script>
-<style>
+<style scoped>
+a.save{
+    position: absolute;
+    right: 30px;
+    z-index: 1000;
+    cursor: pointer;
+}
 
 </style>
 

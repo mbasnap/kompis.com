@@ -20,5 +20,7 @@ export default {
 </script>
 
 <style>
-
+.ql-align-center {
+    text-align: center;
+}
 </style>

@@ -18,6 +18,7 @@
 </template>
 
 <script>
+
 import MbaHeader from './components/Header'
 import LeftSideBar from './components/LeftSideBar'
 
