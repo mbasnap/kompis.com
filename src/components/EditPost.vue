@@ -14,7 +14,7 @@
     import 'quill/dist/quill.bubble.css'
     import { quillEditor, Quill } from 'vue-quill-editor'
     import { ImageDrop } from 'quill-image-drop-module'
-    import {ImageResize} from 'quill-image-resize-modul'
+    import ImageResize from 'quill-image-resize-modul'
     console.log(ImageResize)
     Quill.register('modules/imageDrop', ImageDrop)
     // Quill.register('modules/imageResize', ImageResize)
