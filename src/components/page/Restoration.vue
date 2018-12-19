@@ -29,7 +29,7 @@ export default {
     computed: {
         post() {
             let name = 'restoration'
-            return this.$store.getters['ui/getPostByName'](name) || {name}
+            return this.$store.getters['ui/post'](post => post.name === name) || {name}
         },
         isChanged() {
            return  this.editContent ? this.editContent !== this.post.content : false

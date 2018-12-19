@@ -15,22 +15,17 @@ const state = {
     sideBarMenu: []
 }
 const getters = {
-    getPostByName: state => postName => {
-        let byName = ({name}) => name === postName,
-        res = state.posts.find(byName)
-        console.log(res)
-        return res
-    }
+    postIndex: state => filter => state.posts.findIndex(filter),
+    post: state => filter => state.posts.find(filter)
 }
 const mutations = {
     company: (state, v) => state.company = v,
     mainMenu: (state, v) => state.mainMenu = v,
     posts: (state, v) => state.posts = v,
-    updatePost: (state, post) => {
-        let posts = state.posts,
-        index = posts.findIndex(x => x.id = post.id)
-        // console.log(index)
-        state.posts = [...posts.fill(post, index, index++)];
+    addPost: (state, {index, post}) => {
+        let posts = state.posts.fill(post, index, index++)
+        console.log(posts)
+        state.posts = posts
     },
     lastNews: (state, v) => state.lastNews = v,
     sideBarMenu: (state, v) => state.sideBarMenu = v,
@@ -43,18 +38,10 @@ const actions = {
         db.get('lastNews').then(res =>commit('lastNews', res))
         db.get('sideBarMenu').then(res =>commit('sideBarMenu', res))
     } ,
-    // addPost: ({commit, getters}, payload) => {
-    //     let name = payload.name,
-    //         post = getters.getPostByName(name)
-            
-    //     if(post) commit('updatePost', post)
-    //     else commit('updatePost', payload)
-    // },
-    savePost: ({dispatch, commit}, payload) => {
+    savePost: ({getters, commit}, payload) => {
         return db.update('post', payload).then(res => {
-            // dispatch('addPost', res)
-            commit('updatePost', res)
-            // console.log(res)
+            let index = getters.postIndex(post => post.id === res.id)
+            commit('addPost', {index, post: res})
         })
     } 
 }
