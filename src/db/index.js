@@ -10,7 +10,7 @@ export default {
         .then(res =>  resolve(res.data))),
     update: (action, params) =>  new Promise((resolve, reject) => query('?update=' + action, params)
         .then(res =>  {
-            console.log(res)
+            // console.log(res)
             resolve(res.data)
         }))
 }

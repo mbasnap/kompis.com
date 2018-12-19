@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+// import tinymce from 'tinymce';
+// Vue.use(tinymce);
 
 
 Vue.config.productionTip = false

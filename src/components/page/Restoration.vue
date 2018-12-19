@@ -1,26 +1,56 @@
 <template>
 <div>
-    <router-link :to="{ path: 'edit', query: { post: post.id }}" append>edit</router-link> 
-    <div v-html="post.content"></div>
+    <!-- <router-link :to="{ path: 'edit', query: { post: post.id }}" append>edit</router-link>  -->
+    <a v-show="!editContent" @click="showEditor" >edit</a> 
+    <a v-show="isChanged" @click="save">save</a> 
+    <a v-show="editContent" @click="closeEditor">close</a> 
+        <div
+            v-show="!editContent"
+            v-html="post.content"
+        ></div>
+        <tinymce id="d1"
+            v-show="editContent"
+            v-model="editContent"
+        ></tinymce>
 </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+
+import tinymce from 'vue-tinymce-editor'
+
 export default {
-    computed: {
-        ...mapState('ui', ['posts']),
-        post() {
-            let routeName = this.$route.name,
-            byName = ({name}) => name === 'restoration'
-               return this.posts.find(byName) || {}
+    components: {tinymce},
+    data() {
+        return {
+            editContent: '',
         }
     },
+    computed: {
+        post() {
+            let name = 'restoration'
+            return this.$store.getters['ui/getPostByName'](name) || {name}
+        },
+        isChanged() {
+           return  this.editContent ? this.editContent !== this.post.content : false
+        }
+    },
+    methods: {
+        showEditor() {
+            this.editContent = this.post.content
+        },
+        closeEditor() {
+            this.editContent = ''
+        },
+        save() {
+            let post = this.post ,
+                content = this.editContent 
+            this.$store.dispatch('ui/savePost', {...post, content})
+        },
+    }
 }
 </script>
 
 <style>
-.ql-align-center {
-    text-align: center;
-}
+
 </style>
