@@ -23,8 +23,9 @@ const db = new DataBase('post')
 
 export default {
     components: {tinymce},
-    created() {         
-        if(!this.post) db.get({name: this.name}).then(this.addPost)        
+    created() {
+              
+        // if(!this.post) db.get({name: this.name}).then(this.addPost)        
     },
     data() {
         return {
@@ -36,7 +37,10 @@ export default {
         ...mapActions(['addPost']),
         ...mapGetters(['getPost']),
         post() {
-            return this.getPost(post => post.name = this.name) || {}
+            let post = this.getPost(post => post.name = this.name)
+           return post || db.get({name: this.name}).then(res => {
+               console.log(res)
+           })
         },
         isChanged() {
            return  this.editContent ? this.editContent !== this.post.content : false

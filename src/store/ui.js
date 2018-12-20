@@ -19,8 +19,7 @@ const mutations = {
 const actions = {
     init: (context) => {
         ['company', 'mainMenu', 'lastNews', 'sideBarMenu'].forEach(name => {
-            let commit = (action, res) => {
-                console.log(action)
+            let commit = (res) => {
                 return context.commit(name, res)
             }
             new DataBase(name).get().then(commit)

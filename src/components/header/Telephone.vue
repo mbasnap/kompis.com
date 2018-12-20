@@ -1,15 +1,15 @@
 <template>
-<div class="header-phone block  clearfix">
-    <div class="header-phone-block">
-        <span class="header-phone-block-code">{{companyPhone.kod}}</span>
-        <span class="header-phone-block-number">{{companyPhone.number}}</span>
-    </div>
-    <div class="header-mail-block">
-        <span class="header-mail-block-code"><em>E-mail:</em> </span>
-        <span class="header-mail-block-number"><strong>{{companyMail.mail}}</strong></span>
-    </div>
+    <div class="header-phone block  clearfix">
+        <div class="header-phone-block">
+            <span class="header-phone-block-code">{{companyPhone.kod}}</span>
+            <span class="header-phone-block-number">{{companyPhone.number}}</span>
+        </div>
+        <div class="header-mail-block">
+            <span class="header-mail-block-code"><em>E-mail:</em> </span>
+            <span class="header-mail-block-number"><strong>{{companyMail.mail}}</strong></span>
+        </div>
 
-</div>
+    </div>
 </template>
 
 <script>
@@ -17,12 +17,14 @@ import { mapState} from 'vuex';
 export default {
     computed: {
         ...mapState('ui', ['company']),
+
         companyPhone() {
-            
-            return this.company.phone || {}
+            let company = this.company || {}
+            return company.phone || {}
         },
         companyMail() {
-            return this.company.mail || {}
+            let company = this.company || {}
+            return company.mail || {}
         }
     },
     methods: {

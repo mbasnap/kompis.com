@@ -14,7 +14,11 @@ const mutations = {
     update: (state, {index, post}) => state.posts.splice(index, 1, post),
 }
 const actions = {
-    
+    addPost: ({state, commit}, post) => {
+        let posts = state.posts, id = post.id,
+        index = posts.findIndex(post => post.id = id)
+        index ? commit('update', {index, post}) : commit('add', post)
+    }
 }
 
 export default {

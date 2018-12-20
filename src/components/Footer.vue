@@ -32,18 +32,22 @@ export default {
     computed: {
         ...mapState('ui', ['company']),
         address(){
-            return this.company.address || {}
+            let company = this.company || {}
+            return company.address || {}
         },
         mailes(){
-            let mailes = this.company.mailes || []
+            let company = this.company || {},
+            mailes = company.mailes || []
             return mailes.map(item => item.mail) 
         },
         fax(){
-            let fax = this.company.fax || {}
+            let company = this.company || {},
+            fax = company.fax || {}
             return fax.kod + ' ' + fax.number
         },
         phones(){
-            let phones = this.company.phones || []
+            let company = this.company || {},
+            phones = company.phones || []
             return phones.map(item => item.kod + ' ' + item.number) 
         }
     }

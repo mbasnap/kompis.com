@@ -1,6 +1,6 @@
 <template>
 <div class="column sidebar">
-    <div class="slogan " >{{company.slogan}}</div>
+    <div class="slogan " >{{slogan}}</div>
     <side-bar-menu></side-bar-menu>
     <short-news></short-news>
 </div>
@@ -13,8 +13,12 @@ import {mapState} from 'vuex'
 export default {
     components: {SideBarMenu, ShortNews},
     computed: {
-        ...mapState('ui', ['company'])
-    }
+        ...mapState('ui', ['company']),
+        slogan() {
+            let conpany = this.company || {}
+            return conpany.slogan
+        }
+     }
 }
 </script>
 
