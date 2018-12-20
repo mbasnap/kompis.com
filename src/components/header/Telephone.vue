@@ -18,6 +18,7 @@ export default {
     computed: {
         ...mapState('ui', ['company']),
         companyPhone() {
+            
             return this.company.phone || {}
         },
         companyMail() {

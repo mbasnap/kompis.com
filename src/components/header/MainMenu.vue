@@ -8,7 +8,7 @@
                 <router-link to="/">ГЛАВНАЯ</router-link>
             </li>  
             <li v-for="({name, path},index) in mainMenu" :key="index" > 
-                <router-link :to="path" >{{name}}</router-link>
+                <router-link :to="path || ''" >{{name}}</router-link>
             </li>
         </ul>
     </nav>

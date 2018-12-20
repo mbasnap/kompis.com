@@ -8,28 +8,35 @@
             v-show="!editContent"
             v-html="post.content"
         ></div>
-        <tinymce id="d1"
+        <!-- <tinymce id="d1"
             v-show="editContent"
             v-model="editContent"
-        ></tinymce>
+        ></tinymce> -->
 </div>
 </template>
 
 <script>
-
 import tinymce from 'vue-tinymce-editor'
+import {mapActions, mapGetters} from 'vuex'
+import DataBase from '@/db'
+const db = new DataBase('post')
 
 export default {
     components: {tinymce},
+    created() {         
+        if(!this.post) db.get({name: this.name}).then(this.addPost)        
+    },
     data() {
         return {
+            name: 'restoration',
             editContent: '',
         }
     },
     computed: {
+        ...mapActions(['addPost']),
+        ...mapGetters(['getPost']),
         post() {
-            let name = 'restoration'
-            return this.$store.getters['ui/post'](post => post.name === name) || {name}
+            return this.getPost(post => post.name = this.name) || {}
         },
         isChanged() {
            return  this.editContent ? this.editContent !== this.post.content : false
@@ -43,9 +50,8 @@ export default {
             this.editContent = ''
         },
         save() {
-            let post = this.post ,
-                content = this.editContent 
-            this.$store.dispatch('ui/savePost', {...post, content})
+            let name = this.name, content = this.editContent
+                db.save({...this.post, name, content}).then(this.addPost)
         },
     }
 }

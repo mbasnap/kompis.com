@@ -1,16 +1,23 @@
 import axios from 'axios'
+const url = 'http://kompis-store/db/index.php'
+const getUrl = (action, table) => url + "?" + action + '=' + table
+const query = (action, table, params) => resolve =>{
+    let resolveQuery = ({data}) => {
+        console.log(action)
+        console.log(data)
+        resolve(data)
+    }
+    return    axios.post(getUrl(action, table), JSON.stringify(params))
+            .then(resolveQuery)
+}
 
-const url = 'http://kompis-store/db/index.php',
-    query  = (action, params) => axios.post(url + action, JSON.stringify(params))
+export default class DataBase{
+    constructor(table) {
+        this.table = table
+    }
 
-export default {    
-    get: (action, params) =>  new Promise((resolve, reject) => query('?get=' + action, params)
-        .then(res =>  resolve(res.data))),
-    add: (action, params) =>  new Promise((resolve, reject) => query('?add=' + action, params)
-        .then(res =>  resolve(res.data))),
-    update: (action, params) =>  new Promise((resolve, reject) => query('?update=' + action, params)
-        .then(res =>  {
-            // console.log(res)
-            resolve(res.data)
-        }))
+    save = obj=> obj.id ? this.update(obj) : this.add(obj)
+    get = obj => new Promise(query('get', this.table, obj)) 
+    add = obj =>  new Promise(query('add', this.table, obj)) 
+    update = obj =>  new Promise(query('update', this.table, obj)) 
 }
