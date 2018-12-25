@@ -9,8 +9,8 @@
 <!-- /block-inner /block -->
 <div  class="block phones ">
     <div>
-    <p><em>Тел.:</em><strong>{{phones[0]}}</strong></p>
-    <p><strong>{{phones[1]}}</strong></p>
+    <p><em>Тел.:</em><strong>{{phone}}</strong></p>
+    <!-- <p><strong>{{phone}}</strong></p> -->
     </div>
 </div> 
 <div class="block fax ">
@@ -19,7 +19,7 @@
     </div>
 </div>
 <div class="block mail ">
-<div > <em>E-mail:</em> <strong>{{mailes[0]}}</strong> </div>
+<div > <em>E-mail:</em> <strong>{{mail}}</strong> </div>
 </div>
 
 </div>
@@ -27,28 +27,24 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters} from 'vuex'
 export default {
     computed: {
-        ...mapState('ui', ['company']),
-        address(){
-            let company = this.company || {}
-            return company.address || {}
+        ...mapGetters('ui', ['companyPhones', 'companyMailes', 'companyAddress']),
+        phone() {
+            let {kod, number} = this.companyPhones[0] || {}
+            return kod + ' ' + number
         },
-        mailes(){
-            let company = this.company || {},
-            mailes = company.mailes || []
-            return mailes.map(item => item.mail) 
+        fax() {
+            let {kod, number} =  this.companyPhones[0] || {}
+            return kod + ' ' + number
         },
-        fax(){
-            let company = this.company || {},
-            fax = company.fax || {}
-            return fax.kod + ' ' + fax.number
+        mail() {
+            let {mail} =this.companyMailes[0] || {}
+            return mail
         },
-        phones(){
-            let company = this.company || {},
-            phones = company.phones || []
-            return phones.map(item => item.kod + ' ' + item.number) 
+        address() {
+            return this.companyAddress || {}
         }
     }
 }

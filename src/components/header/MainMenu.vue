@@ -7,8 +7,8 @@
             <li class="first">
                 <router-link to="/">ГЛАВНАЯ</router-link>
             </li>  
-            <li v-for="({name, path},index) in mainMenu" :key="index" > 
-                <router-link :to="path || ''" >{{name}}</router-link>
+            <li v-for="(item,index) in mainMenu" :key="index" > 
+                <router-link :to="routeFrom(item)" >{{item.title}}</router-link>
             </li>
         </ul>
     </nav>
@@ -18,11 +18,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import {mapActions} from 'vuex'
 export default {
-
+// created() {
+//     this.$store.dispatch('mainMenu/init')
+// },
 computed: {
-     ...mapState('ui', ['mainMenu'])   
+    ...mapActions('mainMenu', ['getMenu']),
+    mainMenu() {
+        return this.getMenu
+    } 
+},
+methods: {
+    routeFrom({name, post_id}) {
+        return !post_id ? name : name + "?post=" + post_id
+    }
 }
 }
 </script>

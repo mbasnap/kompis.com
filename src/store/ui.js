@@ -1,5 +1,5 @@
 
-import DataBase from '@/db'
+import {query} from '@/db'
 
 const state = {
     company: {},
@@ -8,7 +8,18 @@ const state = {
     sideBarMenu: []
 }
 const getters = {
-
+    company({company}) {
+        return company || {}
+    },
+    companyPhones(state, {company}) {
+        return   company.phones || []
+    },
+    companyMailes(state, {company}) {
+        return company.mailes || []
+    },
+    companyAddress(state, {company}) {
+        return company.address || {}
+    }
 }
 const mutations = {
     company: (state, v) => state.company = v,
@@ -18,12 +29,21 @@ const mutations = {
 }
 const actions = {
     init: (context) => {
-        ['company', 'mainMenu', 'lastNews', 'sideBarMenu'].forEach(name => {
-            let commit = (res) => {
-                return context.commit(name, res)
-            }
-            new DataBase(name).get().then(commit)
-        })
+        // [
+        //     'company',
+        //     'mainMenu',
+        //     'lastNews',
+        //     'sideBarMenu'
+        // ].forEach(name => {
+        // let commit = res => {
+        // return context.commit(name, res.data)
+        // }
+        // query('getAll').then(commit)
+        // })
+        let commit = name => ({data}) =>  context.commit(name, data)
+        // query('getMainMenu').then(commit('mainMenu'))
+        // query('getCompany').then(commit('company'))
+        // query('getLastNews').then(commit('lastNews'))
     } 
 }
 

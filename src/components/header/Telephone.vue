@@ -13,19 +13,16 @@
 </template>
 
 <script>
-import { mapState} from 'vuex';
+import { mapGetters} from 'vuex';
 export default {
     computed: {
-        ...mapState('ui', ['company']),
-
-        companyPhone() {
-            let company = this.company || {}
-            return company.phone || {}
-        },
-        companyMail() {
-            let company = this.company || {}
-            return company.mail || {}
-        }
+         ...mapGetters('ui', ['companyPhones', 'companyMailes']),
+         companyPhone() {
+             return this.companyPhones[0] || {}
+         },
+         companyMail() {
+             return this.companyMailes[0] || {}
+         }
     },
     methods: {
 
