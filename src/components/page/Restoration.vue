@@ -16,7 +16,6 @@
 <script>
 import tinymce from 'vue-tinymce-editor'
 
-import {mapActions} from 'vuex'
 export default {
     components: {tinymce},
     data() {
@@ -26,12 +25,10 @@ export default {
         }
     },
     computed: {
-        ...mapActions('post', ['getPost', 'updatePost']),
-        query() {
-            return this.$route.query
-        },
+
         post() {
-            return this.getPost(this.query.post) || {}
+            let {getters, dispatch} = this.$store, {id} = this.$route.query
+            return getters.posts[id] || dispatch('getPost', {id})
         },
         saved() {
             return !this.edit 

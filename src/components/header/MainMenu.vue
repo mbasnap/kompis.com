@@ -18,20 +18,17 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+
 export default {
-// created() {
-//     this.$store.dispatch('mainMenu/init')
-// },
 computed: {
-    ...mapActions('mainMenu', ['getMenu']),
     mainMenu() {
-        return this.getMenu
+        let {getters, dispatch} = this.$store
+        return getters['mainMenu'] || dispatch('getMainMenu')
     } 
 },
 methods: {
     routeFrom({name, post_id}) {
-        return !post_id ? name : name + "?post=" + post_id
+        return !post_id ? name : name + "?id=" + post_id
     }
 }
 }

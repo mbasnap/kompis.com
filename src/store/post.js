@@ -3,15 +3,20 @@ import {query} from '@/db'
 const state = {
     posts: {}
 }
-const getters = {}
+const getters = {
+    posts: (state) => state.posts
+}
 const mutations = {
     // posts: (state, v) => state.posts = v,
-    post: (state, {id, v}) => state.posts = {...state.posts, [id]: v}
+    post: (state, {id, post}) => {
+        // console.log({...state.posts, [id]: v})
+        state.posts = {...state.posts, [id]: post}
+    }
 }
 const actions = {
-    getPost: (context, id) => {
-        let commit = res => context.commit('post', {id, res})
-        return state.posts[id] || query('getPost', {id}).then(commit)
+    getPost: (context, {id}) => {
+        let commit = post => context.commit('post', {id, post})
+        query('getPost', {id}).then(commit)
     },
     // addPost: ({state, commit}, post) => {
     //     let posts = state.posts, id = post.id,
