@@ -23,7 +23,8 @@ export default {
 computed: {
     mainMenu() {
         let {getters, dispatch} = this.$store
-        return getters['mainMenu'] || dispatch('getMainMenu')
+        return getters['mainMenu']
+          || dispatch('getMainMenu')
     } 
 },
 methods: {
