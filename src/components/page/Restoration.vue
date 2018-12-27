@@ -12,7 +12,7 @@
 
 <script>
 import tinymce from 'vue-tinymce-editor'
-// import {query} from '@/db'
+import {mapActions} from 'vuex'
 export default {
     components: {tinymce},
     data() {
@@ -26,14 +26,15 @@ export default {
     }
   },
     computed: {
-
+        ...mapActions(['loadPost', 'savePost', 'updatePost']),
         queryId() {
             let query = this.$route.query || {}
             return query.id
         },
         post() {
-            let {getters, dispatch} = this.$store, id = this.queryId
-            return getters.posts[id] || dispatch('loadPost', id)
+            let posts = this.$store.getters.posts || {}, id = this.queryId
+            return posts[id] || this.loadPost(id)
+            // .then(this.updatePost)
         },
         postContent() {
             let post = this.post || {}

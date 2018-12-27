@@ -12,20 +12,13 @@ const mutations = {
 const actions = {
     
     updatePost: ({state, commit}, post) => {
-        let commitPost = () => {
-            return commit('posts', {...state.posts, [post.id]: post}) 
+        let id = post.id, commitPost = () => {
+            return commit('posts', {...state.posts, [id]: post}) 
         }
-        return new Promise(resolve => resolve(post, commitPost))
+        if (id) return new Promise(resolve => resolve(post, commitPost))
     },
-    loadPost: ({dispatch}, id) => {
-        let updatePost = post => dispatch('updatePost', post)
-            return query('getPost', {id}).then(updatePost)
-    },
-    savePost: ({dispatch}, post) => {
-        let updatePost = post => dispatch('updatePost', post)
-            return query('updatePost', post)
-              .then(updatePost)
-    }
+    loadPost: (context, id) => query('getPost', {id}),
+    savePost: (context, post) => query('updatePost', post)
 }
 
 export default {
