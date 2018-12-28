@@ -8,6 +8,7 @@ const state = {
     sideBarMenu: []
 }
 const getters = {
+    mainMenu: ({mainMenu}) => mainMenu,
     company({company}) {
         return company || {}
     },
@@ -40,10 +41,13 @@ const actions = {
         // }
         // query('getAll').then(commit)
         // })
-        let commit = name => ({data}) =>  context.commit(name, data)
-        // query('getMainMenu').then(commit('mainMenu'))
+        let commit = name => res =>  {
+            // console.log(res)
+            context.commit(name, res)
+        }
+        query('getMainMenu').then(commit('mainMenu'))
         // query('getCompany').then(commit('company'))
-        // query('getLastNews').then(commit('lastNews'))
+        query('getLastNews').then(commit('lastNews'))
     } 
 }
 

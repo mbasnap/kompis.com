@@ -1,5 +1,6 @@
 import {query} from '@/db'
-
+// import Exeption from '@/exeption'
+// const {createEx} = new Exeption('store-post')
 const state = {
     posts: {}
 }
@@ -11,12 +12,7 @@ const mutations = {
 }
 const actions = {
     
-    updatePost: ({state, commit}, post) => {
-        let id = post.id, commitPost = () => {
-            return commit('posts', {...state.posts, [id]: post}) 
-        }
-        if (id) return new Promise(resolve => resolve(post, commitPost))
-    },
+    updatePost: ({state, commit}, post) => Promise.resolve(commit('posts', {...state.posts, [post.id]: post})),
     loadPost: (context, id) => query('getPost', {id}),
     savePost: (context, post) => query('updatePost', post)
 }

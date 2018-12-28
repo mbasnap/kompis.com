@@ -2,7 +2,7 @@
 <div>
     <p class="editMenu">
         <a v-show="edit === false" @click="showEditor" >edit</a> 
-        <a v-show="isChanged" @click="save(edit)">save</a> 
+        <a v-show="isChanged" @click="save(post)">save</a> 
         <a v-show="edit !== false" @click="closeEditor">close</a>
     </p>
     <div v-show="edit === false" v-html="postContent"></div>
@@ -26,15 +26,14 @@ export default {
     }
   },
     computed: {
-        ...mapActions(['loadPost', 'savePost', 'updatePost']),
+        
         queryId() {
             let query = this.$route.query || {}
             return query.id
         },
         post() {
-            let posts = this.$store.getters.posts || {}, id = this.queryId
-            return posts[id] || this.loadPost(id)
-            // .then(this.updatePost)
+            let posts = this.$store.getters.posts, id = this.queryId
+            return posts[id] || this.loadPost(id).then(this.updatePost)
         },
         postContent() {
             let post = this.post || {}
@@ -53,15 +52,17 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['loadPost', 'savePost', 'updatePost']),
         showEditor() {
             this.edit = this.postContent
         },
         closeEditor() {
             this.edit = false
         },
-        save(content) {
-            let {getters, dispatch} = this.$store, id = this.queryId
-            dispatch('savePost', {id, content: this.editContent}).then(this.closeEditor)
+        save(post) {
+            this.savePost({...post, content: this.editContent})
+                .then(this.updatePost)
+                    .then(this.closeEditor)
         }
     }
 }

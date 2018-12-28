@@ -8,7 +8,7 @@
                 <router-link to="/">ГЛАВНАЯ</router-link>
             </li>  
             <li v-for="(item,index) in mainMenu" :key="index" > 
-                <router-link :to="routeFrom(item)" >{{item.title}}</router-link>
+                <router-link :to="route(item)" >{{item.title}}</router-link>
             </li>
         </ul>
     </nav>
@@ -22,14 +22,13 @@
 export default {
 computed: {
     mainMenu() {
-        let {getters, dispatch} = this.$store
-        return getters['mainMenu']
-          || dispatch('getMainMenu')
+        return this.$store.getters['ui/mainMenu']
     } 
 },
 methods: {
-    routeFrom({name, post_id}) {
-        return !post_id ? name : name + "?id=" + post_id
+    route({name, post_id}) {
+        let id = post_id ? "?id=" + post_id : ''
+        return name + id
     }
 }
 }

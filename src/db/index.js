@@ -1,18 +1,9 @@
-import axios from 'axios'
+import {post} from 'axios'
 const url = 'http://kompis-store/db/index.php',
-    query = (action, params) => new Promise(resolve => {
-        axios.post(url, JSON.stringify({action,params})).then(res => {
-            console.log(res)
-            resolve(res.data)
-        })
-    }),
-    reduceBy = key => arr => new Promise(resolve => {
-        let res = arr.reduce((res, item) => {
-            res[item[key]] = item
-            return res
-        },{})
-        resolve(res)
-    })
+    getPost = params => post(url, JSON.stringify(params)),
+    result = key => (res, item) => res = {...res, [item[key]]: item},
+    query = (action, params) => getPost({action,params}).then(res => res.data),
+    reduceBy = key => arr => Promise.resolve(arr.reduce(result(key), {}))
 export  {
     query,
     reduceBy
