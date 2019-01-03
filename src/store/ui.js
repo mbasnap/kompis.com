@@ -1,14 +1,18 @@
 
-import {query} from '@/db'
+import DataBase from '@/db'
+// const menu = new DataBase('Menu',{groupe: 'main'})
+// const newsDB = new DataBase('News')
+const menuDB = new DataBase('Menu')
 
 const state = {
     company: {},
-    mainMenu: [],
-    lastNews: [],
+    menu: {},
+    news: {},
     sideBarMenu: []
 }
 const getters = {
-    mainMenu: ({mainMenu}) => mainMenu,
+    mainMenu: ({menu}) => Object.values(menu),
+    lastNews: ({news}) => Object.values(news),
     company({company}) {
         return company || {}
     },
@@ -23,31 +27,13 @@ const getters = {
     }
 }
 const mutations = {
-    company: (state, v) => state.company = v,
-    mainMenu: (state, v) => state.mainMenu = v,
-    lastNews: (state, v) => state.lastNews = v,
-    sideBarMenu: (state, v) => state.sideBarMenu = v,
+    menu: (state, v) => state.menu = v,
+    news: (state, v) => state.news = v,
 }
 const actions = {
-    init: (context) => {
-        // [
-        //     'company',
-        //     'mainMenu',
-        //     'lastNews',
-        //     'sideBarMenu'
-        // ].forEach(name => {
-        // let commit = res => {
-        // return context.commit(name, res.data)
-        // }
-        // query('getAll').then(commit)
-        // })
-        let commit = name => res =>  {
-            // console.log(res)
-            context.commit(name, res)
-        }
-        query('getMainMenu').then(commit('mainMenu'))
-        // query('getCompany').then(commit('company'))
-        query('getLastNews').then(commit('lastNews'))
+    init: ({commit}) => {
+        // newsDB.query('getLast').then(res => commit('news', res))
+        menuDB.get().then(res => commit('menu', res))
     } 
 }
 

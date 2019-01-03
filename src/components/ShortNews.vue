@@ -6,17 +6,17 @@
             <span class="date-display-single" >{{item.date}}</span>
             </div>
             <div class="views-field-short-description">
-            <a :href="item.href">{{item.title}}</a>
+            <a >{{item.title}}</a>
             </div> 
         </div>
     </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapGetters} from 'vuex'
 export default {
 computed: {
-    ...mapState('ui', ['lastNews']),
+    ...mapGetters('ui', ['lastNews']),
 },
 
 }

@@ -2,7 +2,7 @@
 <div>
     <p class="editMenu">
         <a v-show="edit === false" @click="showEditor" >edit</a> 
-        <a v-show="isChanged" @click="save(post)">save</a> 
+        <a v-show="isChanged" @click="save">save</a> 
         <a v-show="edit !== false" @click="closeEditor">close</a>
     </p>
     <div v-show="edit === false" v-html="postContent"></div>
@@ -33,7 +33,8 @@ export default {
         },
         post() {
             let posts = this.$store.getters.posts, id = this.queryId
-            return posts[id] || this.loadPost(id).then(this.updatePost)
+            return posts[id] || this.getPost(id)
+            // .then(this.updatePost)
         },
         postContent() {
             let post = this.post || {}
@@ -52,17 +53,16 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['loadPost', 'savePost', 'updatePost']),
+        ...mapActions(['getPost', 'updatePost']),
         showEditor() {
             this.edit = this.postContent
         },
         closeEditor() {
             this.edit = false
         },
-        save(post) {
-            this.savePost({...post, content: this.editContent})
-                .then(this.updatePost)
-                    .then(this.closeEditor)
+        save() {
+            let id = this.queryId, post = {...this.post, content: this.editContent}
+            this.updatePost({id, post}).then(this.closeEditor)
         }
     }
 }
