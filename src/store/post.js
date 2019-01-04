@@ -1,22 +1,20 @@
 import DataBase from '@/db'
 const {get, update} = new DataBase('Post')
-// import Exeption from '@/exeption'
-// const {createEx} = new Exeption('store-post')
 const state = {
     posts: {}
 }
 const getters = {
-    posts: (state) => state.posts
+    posts: (state) => state.posts,
+    
 }
 const mutations = {
-    posts: (state, v) => state.posts = v,
+    updatePosts: (state, posts) => state.posts = {...state.posts, ...posts},
 }
-const actions = {   
-    // updatePost: ({state, commit}, post) => Promise.resolve(commit('posts', {...state.posts, [post.id]: post})),
-    getPost: ({state, commit}, id) => get({id})
-         .then(res => commit('posts', {...state.posts, ...res})),
-    updatePost: ({state, commit}, {id, post}) => update(id, post)
-    // .then(res => commit('posts', {...state.posts, ...res}))
+const actions = { 
+    getPost: ({commit}, id) => get({id})
+         .then(res => commit('updatePosts', res)),
+    updatePost: ({commit}, {id, post}) => update({...post, id})
+        .then(id => commit('updatePosts', {[id]: post}))
 }
 
 export default {
